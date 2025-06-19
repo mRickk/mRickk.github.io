@@ -97,7 +97,9 @@
     </style>
 </head>
 <body class="text-gray-800">
-    <div class="container mx-auto px-4 py-8">
+    <!-- Topographic background SVG -->
+    <svg id="topo-bg" class="fixed inset-0 w-full h-full pointer-events-none z-0" style="opacity:0.5"></svg>
+    <div class="container mx-auto px-4 py-8 relative z-10">
         <!-- Header with Profile Image -->
         <header class="flex flex-col items-center mb-12">
             <img src="avatar.JPG" 
@@ -364,6 +366,71 @@
         </footer>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-contour@4"></script>
+    <script>
+    // Topographic background using d3-contour
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const svg = d3.select("#topo-bg")
+        .attr("width", width)
+        .attr("height", height);
+
+    // Generate random noise for "elevation"
+    function generateElevation(width, height, scale = 120) {
+        const values = new Float32Array(width * height);
+        for (let y = 0; y < height; ++y) {
+            for (let x = 0; x < width; ++x) {
+                // Simple noise: sum of sines for organic look
+                const v = (
+                    Math.sin(x / scale) +
+                    Math.cos(y / scale) +
+                    Math.sin((x + y) / (scale * 0.7)) +
+                    Math.cos((x - y) / (scale * 1.3))
+                );
+                values[x + y * width] = v;
+            }
+        }
+        return values;
+    }
+
+    const values = generateElevation(width, height, 120);
+
+    // Generate contours
+    const contours = d3.contours()
+        .size([width, height])
+        .thresholds(d3.range(-3, 3, 0.3))
+        (values);
+
+    svg.selectAll("path")
+        .data(contours)
+        .join("path")
+        .attr("d", d3.geoPath())
+        .attr("fill", "none")
+        .attr("stroke", "#bbb")
+        .attr("stroke-width", 1)
+        .attr("opacity", d => 0.5);
+
+    // Responsive redraw on resize
+    window.addEventListener('resize', () => {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        svg.attr("width", w).attr("height", h);
+        const vals = generateElevation(w, h, 120);
+        const conts = d3.contours()
+            .size([w, h])
+            .thresholds(d3.range(-3, 3, 0.3))
+            (vals);
+        svg.selectAll("path")
+            .data(conts)
+            .join("path")
+            .attr("d", d3.geoPath())
+            .attr("fill", "none")
+            .attr("stroke", "#bbb")
+            .attr("stroke-width", 1)
+            .attr("opacity", d => 0.5);
+    });
+    </script>
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -425,4 +492,5 @@
             });
         });
     </script>
+</body>
 </html>
