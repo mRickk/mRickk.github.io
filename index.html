@@ -1,1 +1,428 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riccardo Mazzi | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+        
+        .skill-pill {
+            transition: all 0.3s ease;
+        }
+        
+        .skill-pill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .project-card {
+            transition: all 0.3s ease !important;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .profile-img {
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .skill-pill.group {
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-pill.group [data-fill] {
+            pointer-events: none;
+            border-radius: 9999px;
+            transition: width 0.3s;
+        }
+        .skill-pill.group span.relative {
+            position: relative;
+        }
+
+        .skill-fill-gradient {
+            background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+            opacity: 0.5;
+            border-radius: 9999px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header with Profile Image -->
+        <header class="flex flex-col items-center mb-12">
+            <img src="avatar.JPG" 
+                 alt="Riccardo Mazzi" 
+                 class="profile-img w-40 h-40 rounded-full object-cover mb-6 animate-float">
+            <h1 class="text-4xl font-bold text-center mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">Riccardo Mazzi</h1>
+            <pre class="text-xl text-gray-600 text-center mb-4 bg-gray-100 rounded-md px-4 py-2 font-mono">MSc CSE @ UniBo</pre>
+            <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4 w-full md:w-auto text-center">
+                <a href="#experience" class="nav-link px-4 py-2 font-medium">Experience</a>
+                <a href="#projects" class="nav-link px-4 py-2 font-medium">Projects</a>
+                <a href="#contact" class="nav-link px-4 py-2 font-medium">Contact</a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="space-y-12 max-w-4xl mx-auto">
+            <!--</main> About Section -->
+            <section id="about" class="glass-card p-8">
+                <h2 class="text-3xl font-bold mb-6 text-blue-600">About Me</h2>
+                <div class="gap-8">
+                    <div>
+                        <p class="mb-4 text-lg">Hey there! I'm Riccardo, a <span class="font-semibold">software engineer</span> from Italy who is looking forward to work around Europe in cool tech hubs!</p>
+                        <p class="mb-4 text-lg">I'm currently attending <span class="font-semibold">Master's degree in Computer Science and Engineering</span> at the University of Bologna, after graduating with a Bachelor's degree in the same field.</p>
+                        <p class="mb-4 text-lg">I'm always looking for new challenges to tackle, new stuff to learn, and new exciting things to do! I love going to the gym and hiking in the mountains :)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section id="experience" class="glass-card p-8">
+                <h2 class="text-3xl font-bold mb-6 text-blue-600">Experience</h2>
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xl font-semibold">Full Stack Engineer</h3>
+                        <p class="text-gray-600">IN.TRA.M s.r.o, Prague • Sep - Dec 2023 (ERASMUS+ traineeship)</p>
+                        <ul class="list-disc pl-5 mt-2 space-y-2">
+                            <li>Developed front-end applications using HTML, CSS, JavaScript, Bootstrap, and WordPress</li>
+                            <li>Built back-end systems with PHP, MySQL, phpMyAdmin, and Apache</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold mb-6 text-blue-600">Education</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-medium">Master of Computer Science and Engineering</h4>
+                                <p class="text-gray-600">University of Bologna • Sep 2024 - Present</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Bachelor of Computer Science and Engineering</h4>
+                                <p class="text-gray-600">University of Bologna • Sep 2021 - Nov 2024</p>
+                                <p class="text-sm"><span class="font-semibold">Graduated with top honors</span> (110/110 cum laude)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="glass-card p-8">
+                <h2 class="text-3xl font-bold mb-6 text-blue-600">Projects</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Project 1 -->
+                    <div class="project-card bg-white bg-opacity-50 rounded-xl p-6 cursor-pointer hover:bg-blue-50"
+                        onclick="window.open('https://www.swisshacks.com/', '_blank')">
+                        <div class="flex items-center mb-4">
+                           <div class="bg-blue-100 p-3 rounded-full mr-4">
+                              <i class="fas fa-chart-line text-blue-600 text-xl"></i>
+                           </div>
+                           <h3 class="text-xl font-semibold">SwissHacks 2025</h3>
+                        </div>
+                        <p class="text-gray-700 mb-3">Web application that converts natural language prompts into interactive charts using real startup data from Startup Ticker.</p>
+                        <div class="flex flex-wrap gap-2">
+                           <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Text-to-SQL</span>
+                           <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Interactive Web App</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="project-card bg-white bg-opacity-50 rounded-xl p-6 cursor-pointer hover:bg-yellow-50"
+                        onclick="window.open('https://www.hackhealth.eu/', '_blank')">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-heartbeat text-yellow-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">DeepMedScan</h3>
+                        </div>
+                        <p class="text-gray-700 mb-3">Web application for real-time data capture from medical devices using Raspberry Pi and computer vision models.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Computer Vision</span>
+                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Raspberry Pi</span>
+                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Healthcare</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="project-card bg-white bg-opacity-50 rounded-xl p-6 cursor-pointer hover:bg-purple-50"
+                        onclick="window.open('https://amslaurea.unibo.it/id/eprint/33743/', '_blank')">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-brain text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">GenIrCxr</h3>
+                        </div>
+                        <p class="text-gray-700 mb-3">Bachelor's thesis: Generative AI model for Information Retrieval in the chest X-rays medical domain.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">Generative AI</span>
+                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">Information Retrieval</span>
+                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">Research</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 4 -->
+                    <div class="project-card bg-white bg-opacity-50 rounded-xl p-6 cursor-pointer hover:bg-green-50"
+                        onclick="window.open('https://greenhack.eu/', '_blank')">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-leaf text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">GreenHack 2024</h3>
+                        </div>
+                        <p class="text-gray-700 mb-3">Tesco shopping app boosting sustainable products to encourage eco-friendly shopping habits.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Sustainability</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Mobile App</span>
+                        </div>
+                    </div>
+                </div>
+            
+                <h3 class="text-xl font-semibold mb-4 mt-6 text-indigo-600">Other projects</h3>
+                <div class="space-y-4">
+                    <div class="project-card bg-white bg-opacity-50 rounded-xl p-6 hover:bg-red-50 cursor-pointer flex justify-between items-center"
+                        onclick="window.open('https://github.com/mRickk/DailyMacros', '_blank')">
+                        <p class="text-gray-700"><span class="font-semibold">DailyMacros</span> &nbsp;&nbsp;&nbsp;a calories tracker app using Android Studio</p>
+                    </div>
+                    <div class="project-card bg-white bg-opacity-50 rounded-xl p-6 hover:bg-orange-50 cursor-pointer flex justify-between items-center"
+                        onclick="window.open('https://github.com/mRickk/revly', '_blank')">
+                        <p class="text-gray-700"><span class="font-semibold">Revly</span> &nbsp;&nbsp;&nbsp;a Web app for a social network about reviews, focusing on accessibility</p>
+                    </div>
+                    <div class="project-card bg-white bg-opacity-50 rounded-xl p-6 hover:bg-blue-50 cursor-pointer flex justify-between items-center"
+                        onclick="window.open('https://github.com/mRickk/ElaboratoDBErasmusTraineeship', '_blank')">
+                        <p class="text-gray-700"><span class="font-semibold">ERASMUS+ Call Platform</span> &nbsp;&nbsp;&nbsp; Platform developed in C#, focusing on the SQL database design</p>
+                    </div>
+                    <div class="project-card bg-white bg-opacity-50 rounded-xl p-6 hover:bg-green-50 cursor-pointer flex justify-between items-center"
+                        onclick="window.open('https://github.com/NicolasAmadori/OOP22-flower-force', '_blank')">
+                        <p class="text-gray-700"><span class="font-semibold">Flower Force</span> &nbsp;&nbsp;&nbsp;a videogame in Java and C# for the OOP course</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Skills Section -->
+            <section class="glass-card p-8">
+                <h2 class="text-3xl font-bold mb-6 text-blue-600">Technical Skills</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="skill-pill bg-white bg-opacity-50 rounded-full px-4 py-2 text-center font-medium relative overflow-hidden group" style="--fill: 0.8;">
+                        <span class="relative z-10">C/C#</span>
+                        <span class="absolute left-0 top-0 h-full transition-all duration-500 z-0 skill-fill-gradient"
+                              style="width:0%;"
+                              data-fill></span>
+                    </div>
+                    <div class="skill-pill bg-white bg-opacity-50 rounded-full px-4 py-2 text-center font-medium relative overflow-hidden group" style="--fill: 1;">
+                        <span class="relative z-10">Java</span>
+                        <span class="absolute left-0 top-0 h-full transition-all duration-500 z-0 skill-fill-gradient"
+                              style="width:0%;"
+                              data-fill></span>
+                    </div>
+                    <div class="skill-pill bg-white bg-opacity-50 rounded-full px-4 py-2 text-center font-medium relative overflow-hidden group" style="--fill: 1;">
+                        <span class="relative z-10">Python</span>
+                        <span class="absolute left-0 top-0 h-full transition-all duration-500 z-0 skill-fill-gradient"
+                              style="width:0%;"
+                              data-fill></span>
+                    </div>
+                    <div class="skill-pill bg-white bg-opacity-50 rounded-full px-4 py-2 text-center font-medium relative overflow-hidden group" style="--fill: 0.85;">
+                        <span class="relative z-10">SQL/NoSQL</span>
+                        <span class="absolute left-0 top-0 h-full transition-all duration-500 z-0 skill-fill-gradient"
+                              style="width:0%;"
+                              data-fill></span>
+                    </div>
+                    <div class="skill-pill bg-white bg-opacity-50 rounded-full px-4 py-2 text-center font-medium relative overflow-hidden group" style="--fill: 0.8;">
+                        <span class="relative z-10">HTML/CSS/JS</span>
+                        <span class="absolute left-0 top-0 h-full transition-all duration-500 z-0 skill-fill-gradient"
+                              style="width:0%;"
+                              data-fill></span>
+                    </div>
+                    <div class="skill-pill bg-white bg-opacity-50 rounded-full px-4 py-2 text-center font-medium relative overflow-hidden group" style="--fill: 0.6;">
+                        <span class="relative z-10">PHP</span>
+                        <span class="absolute left-0 top-0 h-full transition-all duration-500 z-0 skill-fill-gradient"
+                              style="width:0%;"
+                              data-fill></span>
+                    </div>
+                    <div class="skill-pill bg-white bg-opacity-50 rounded-full px-4 py-2 text-center font-medium relative overflow-hidden group" style="--fill: 0.6;">
+                        <span class="relative z-10">PyTorch</span>
+                        <span class="absolute left-0 top-0 h-full transition-all duration-500 z-0 skill-fill-gradient"
+                              style="width:0%;"
+                              data-fill></span>
+                    </div>
+                    <div class="skill-pill bg-white bg-opacity-50 rounded-full px-4 py-2 text-center font-medium relative overflow-hidden group" style="--fill: 0.75;">
+                        <span class="relative z-10">OpenCV</span>
+                        <span class="absolute left-0 top-0 h-full transition-all duration-500 z-0 skill-fill-gradient"
+                              style="width:0%;"
+                              data-fill></span>
+                    </div>
+                    <div class="skill-pill bg-white bg-opacity-50 rounded-full px-4 py-2 text-center font-medium relative overflow-hidden group" style="--fill: 0.9;">
+                        <span class="relative z-10">Git</span>
+                        <span class="absolute left-0 top-0 h-full transition-all duration-500 z-0 skill-fill-gradient"
+                              style="width:0%;"
+                              data-fill></span>
+                    </div>
+                    <div class="skill-pill bg-white bg-opacity-50 rounded-full px-4 py-2 text-center font-medium relative overflow-hidden group" style="--fill: 0.65;">
+                        <span class="relative z-10">Kotlin</span>
+                        <span class="absolute left-0 top-0 h-full transition-all duration-500 z-0 skill-fill-gradient"
+                              style="width:0%;"
+                              data-fill></span>
+                    </div>
+                    <div class="skill-pill bg-white bg-opacity-50 rounded-full px-4 py-2 text-center font-medium relative overflow-hidden group" style="--fill: 0.8;">
+                        <span class="relative z-10">Scala</span>
+                        <span class="absolute left-0 top-0 h-full transition-all duration-500 z-0 skill-fill-gradient"
+                              style="width:0%;"
+                              data-fill></span>
+                    </div>
+                    <div class="skill-pill bg-white bg-opacity-50 rounded-full px-4 py-2 text-center font-medium relative overflow-hidden group" style="--fill: 0.6;">
+                        <span class="relative z-10">Gradle</span>
+                        <span class="absolute left-0 top-0 h-full transition-all duration-500 z-0 skill-fill-gradient"
+                              style="width:0%;"
+                              data-fill></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="glass-card p-8">
+                <h2 class="text-3xl font-bold mb-6 text-blue-600">Get In Touch</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <p class="text-lg mb-6">I'm always open to discussing new projects, creative ideas or exciting opportunities!</p>
+                    </div>
+                    <div>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-blue-500 mr-4 text-xl"></i>
+                                <a href="mailto:riccardo.mazzi@studio.unibo.it" class="text-blue-600 hover:underline">riccardo.mazzi@studio.unibo.it</a>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-blue-500 mr-4 text-xl"></i>
+                                <span>Cesena, Italy</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fab fa-linkedin text-blue-500 mr-4 text-xl"></i>
+                                <a href="https://www.linkedin.com/in/b32-i5sw4zlsmfwcas3fnzxwe2jb/" class="text-blue-600 hover:underline">in/b32-I5SW4ZLSMFWCAS3FNZXWE2JB/</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-16 text-center text-gray-600 py-6">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://github.com/mRickk" class="text-gray-600 hover:text-blue-500"><i class="fab fa-github text-xl"></i></a>
+                <a href="https://www.linkedin.com/in/b32-i5sw4zlsmfwcas3fnzxwe2jb/" class="text-gray-600 hover:text-blue-500"><i class="fab fa-linkedin text-xl"></i></a>
+                <a href="https://www.instagram.com/riccardo.mazzi/" class="text-gray-600 hover:text-blue-500"><i class="fab fa-instagram text-xl"></i></a>
+            </div>
+            <p>© 2025 Riccardo Mazzi. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.glass-card, .project-card').forEach(card => {
+            observer.observe(card);
+            card.classList.add('opacity-0', 'transition-opacity', 'duration-500');
+        });
+        
+        // Add fade-in class when element is in viewport
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.glass-card, .project-card').forEach(card => {
+                    if (card.getBoundingClientRect().top < window.innerHeight) {
+                        card.classList.add('opacity-100');
+                    }
+                });
+            }, 100);
+        });
+        
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.glass-card, .project-card').forEach(card => {
+                if (card.getBoundingClientRect().top < window.innerHeight * 0.8) {
+                    card.classList.add('opacity-100');
+                }
+            });
+        });
+
+        document.querySelectorAll('.skill-pill.group').forEach(pill => {
+            const fill = pill.querySelector('[data-fill]');
+            const percent = parseFloat(pill.style.getPropertyValue('--fill')) || 0.8;
+            fill.style.background = `linear-gradient(90deg, #3b82f6 0%, #22c55e 100%)`;
+            pill.addEventListener('mouseenter', () => {
+                fill.style.width = (percent * 100) + '%';
+            });
+            pill.addEventListener('mouseleave', () => {
+                fill.style.width = '0%';
+            });
+        });
+    </script>
+</html>
